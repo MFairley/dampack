@@ -28,39 +28,39 @@
 run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
                     strategies = NULL, currency = "$", ...) {
   opt_arg_val <- list(...)
-  if (!is.null(params_basecase)) {
-    fun_input_test <- c(list(c(psa_samp[1, ], params_basecase)), opt_arg_val)
-  } else {
-    fun_input_test <- c(list(psa_samp[1, ]), opt_arg_val)
-  }
+  #if (!is.null(params_basecase)) {
+  #  fun_input_test <- c(list(c(psa_samp[1, ], params_basecase)), opt_arg_val)
+  #} else {
+  #  fun_input_test <- c(list(psa_samp[1, ]), opt_arg_val)
+  #}
 
-  jj <- tryCatch({
-    userfun <- do.call(FUN, fun_input_test)
-  },
-  error = function(e) NA)
-  if (is.na(sum(is.na(jj)))) {
-    stop("FUN is not well defined by the parameter values and ...")
-  }
-  userfun <- do.call(FUN, fun_input_test)
-
-  if (is.null(strategies)) {
-    strategies <- paste0("st_", userfun[, 1])
-  }
-
-  if (!is.data.frame(userfun)) {
-    stop("FUN should return a data.frame with >= 2 columns. 1st column is strategy name; the rest are outcomes")
-  }
-
-  if (length(strategies) != length(userfun[, 1])) {
-    stop("number of strategies is not the same as the number of strategies in user defined FUN")
-  }
-
-  v_outcomes <- colnames(userfun)[-1]
-
-  if (!all(outcomes %in% v_outcomes)) {
-    stop("at least one outcome is not in FUN outcomes")
-  }
-  if (is.null(outcomes)) outcomes <- v_outcomes
+  #jj <- tryCatch({
+  #  userfun <- do.call(FUN, fun_input_test)
+  #},
+  #error = function(e) NA)
+  #if (is.na(sum(is.na(jj)))) {
+  #  stop("FUN is not well defined by the parameter values and ...")
+  #}
+  #userfun <- do.call(FUN, fun_input_test)
+#
+  #if (is.null(strategies)) {
+  #  strategies <- paste0("st_", userfun[, 1])
+  #}
+#
+  #if (!is.data.frame(userfun)) {
+  #  stop("FUN should return a data.frame with >= 2 columns. 1st column is strategy name; the rest are outcomes")
+  #}
+#
+  #if (length(strategies) != length(userfun[, 1])) {
+  #  stop("number of strategies is not the same as the number of strategies in user defined FUN")
+  #}
+#
+  #v_outcomes <- colnames(userfun)[-1]
+#
+  #if (!all(outcomes %in% v_outcomes)) {
+  #  stop("at least one outcome is not in FUN outcomes")
+  #}
+  #if (is.null(outcomes)) outcomes <- v_outcomes
 
   sim_out_ls <- vector(mode = "list", length = nrow(psa_samp))
 
