@@ -65,34 +65,34 @@ run_owsa_det <- function(params_range, params_basecase, nsamp = 100, FUN,
     stop("basecase has to be in between min and max")
   }
 
-  jj <- tryCatch({
-    userfun <- do.call(FUN, fun_input_ls)
-  },
-  error = function(e) NA)
-  if (is.na(sum(is.na(jj)))) {
-    stop("FUN is not well defined by 'params_basecase' and ...")
-  }
-
-  userfun <- do.call(FUN, fun_input_ls)
-  if (is.null(strategies)) {
-    strategies <- paste0("st_", userfun[, 1])
-  }
-
-  if (!is.data.frame(userfun)) {
-    stop("FUN should return a data.frame with >= 2 columns. 1st column is strategy name; the rest are outcomes")
-  }
-
-  if (length(strategies) != length(userfun[, 1])) {
-    stop("number of strategies is not the same as the number of strategies in user defined FUN")
-  }
-
-
-  v_outcomes <- colnames(userfun)[-1]
-
-  if (!all(outcomes %in% v_outcomes)) {
-    stop("at least one outcome is not in FUN outcomes")
-    }
-  if (is.null(outcomes)) outcomes <- v_outcomes
+  #jj <- tryCatch({
+  #  userfun <- do.call(FUN, fun_input_ls)
+  #},
+  #error = function(e) NA)
+  #if (is.na(sum(is.na(jj)))) {
+  #  stop("FUN is not well defined by 'params_basecase' and ...")
+  #}
+#
+  #userfun <- do.call(FUN, fun_input_ls)
+  #if (is.null(strategies)) {
+  #  strategies <- paste0("st_", userfun[, 1])
+  #}
+#
+  #if (!is.data.frame(userfun)) {
+  #  stop("FUN should return a data.frame with >= 2 columns. 1st column is strategy name; the rest are outcomes")
+  #}
+#
+  #if (length(strategies) != length(userfun[, 1])) {
+  #  stop("number of strategies is not the same as the number of strategies in user defined FUN")
+  #}
+#
+#
+  #v_outcomes <- colnames(userfun)[-1]
+#
+  #if (!all(outcomes %in% v_outcomes)) {
+  #  stop("at least one outcome is not in FUN outcomes")
+  #  }
+  #if (is.null(outcomes)) outcomes <- v_outcomes
 
   param_table_all <- NULL
   sim_out_df <- NULL
