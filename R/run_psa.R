@@ -100,8 +100,6 @@ run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
                                    currency = currency)
     }
 
-    browser()
-
     sim_outlist_ls <- lapply(sim_out_ls,
                              function(x) {
                                out <- x[[2]]
