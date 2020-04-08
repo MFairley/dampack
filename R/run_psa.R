@@ -27,6 +27,7 @@
 
 run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
                     strategies = NULL, currency = "$", ...) {
+  browser()
   opt_arg_val <- list(...)
   #if (!is.null(params_basecase)) {
   #  fun_input_test <- c(list(c(psa_samp[1, ], params_basecase)), opt_arg_val)
