@@ -105,7 +105,7 @@ run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
     sim_outlist_ls <- lapply(sim_out_ls,
                              function(x) {
                                out <- x[[2]]
-                               names(out) <- strategies
+                               #names(out) <- strategies
                                return(out)
                              })
 
