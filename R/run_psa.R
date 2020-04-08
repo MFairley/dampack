@@ -81,10 +81,10 @@ run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
   sim_out_df <- vector(mode = "list", length = n_outcomes)
   names(sim_out_df) <- outcomes
   for (j in 1:n_outcomes) {
-    browser()
+    #browser()
     sim_out_df[[j]] <- lapply(sim_out_ls,
                               function(x, tmp_out = outcomes[j]) {
-                                x[1][[outcomes[j]]]
+                                x[[1]][[outcomes[j]]]
                               })
     sim_out_df[[j]] <- as.data.frame(do.call(rbind, sim_out_df[[j]]))
     colnames(sim_out_df[[j]]) <- strategies
