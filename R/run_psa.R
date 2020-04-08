@@ -100,8 +100,19 @@ run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
                                    currency = currency)
     }
 
+    browser()
+
+    sim_outlist_ls <- lapply(sim_out_ls,
+                             function(x) {
+                               out <- x[[2]]
+                               names(out) <- strategies
+                               return(out)
+                             })
+
 
     names(psa_out) <- outcomes
 
-    return(psa_out)
+    output_list <- list(psa_out = psa_out, out_list = sim_outlist_ls)
+
+    return(output_list)
   }
