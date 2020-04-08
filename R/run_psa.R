@@ -27,7 +27,7 @@
 
 run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
                     strategies = NULL, currency = "$", ...) {
-  browser()
+
   opt_arg_val <- list(...)
   #if (!is.null(params_basecase)) {
   #  fun_input_test <- c(list(c(psa_samp[1, ], params_basecase)), opt_arg_val)
@@ -81,6 +81,7 @@ run_psa <- function(psa_samp, params_basecase = NULL, FUN, outcomes = NULL,
   sim_out_df <- vector(mode = "list", length = n_outcomes)
   names(sim_out_df) <- outcomes
   for (j in 1:n_outcomes) {
+    browser()
     sim_out_df[[j]] <- lapply(sim_out_ls,
                               function(x, tmp_out = outcomes[j]) {
                                 x[1][[outcomes[j]]]
